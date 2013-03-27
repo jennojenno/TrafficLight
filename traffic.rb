@@ -65,11 +65,13 @@ Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   stroke black    
   
   @traffic_light = TrafficLight.new
-  @top = Bulb.new self, 50, 40, true     
-  @middle = Bulb.new self, 50, 100, true
-  @bottom = Bulb.new self, 50, 160, true
+  @top = StopBulb.new self, 50, 40, true     
+  @middle = WaitBulb.new self, 50, 100, true
+  @bottom = GoBulb.new self, 50, 160, true
+
   
   click do #make this switch on/off depending on what you click. Only 1 should be on 
+
     
   end
 end
