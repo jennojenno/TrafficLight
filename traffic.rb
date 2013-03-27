@@ -2,7 +2,7 @@ class TrafficLight
   include Enumerable
 
   def each
-    yield [true, false, false]
+    yield [true, false, false] #top to bottom: on, off, off
     yield [true, true, false]
     yield [false, false, true]
     yield [false, true, false]
@@ -16,27 +16,49 @@ class Bulb < Shoes::Shape
   attr_accessor :switched_on
   
   def initialize(stack, left, top, switched_on = false)    
-    self.stack = stack
+    self.stack = stack #don't change. 
     self.left = left    
     self.top = top
     self.switched_on = switched_on
     draw left, top, bulb_colour
+
   end
   
   # HINT: Shouldn't need to change this method
-  def draw(left, top, colour)    
+  def draw(left, top, colour
+    )    
     stack.app do
       fill colour
+
       stack.append do
         oval left, top, 50
       end
     end
   end
   
-  def bulb_colour
+  def bulb_colour 
     "#999999"
   end  
 end
+
+class GoBulb < Bulb
+  def colour
+    "#00FF30"
+  end
+end
+
+class WaitBulb < Bulb
+  def colour
+    "#FFFC00"
+  end
+end
+
+class StopBulb < Bulb
+  def colour
+    "#FF0000"
+  end
+end
+
 
 Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   background "000", :curve => 10, :margin => 25  
@@ -47,7 +69,7 @@ Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   @middle = Bulb.new self, 50, 100, true
   @bottom = Bulb.new self, 50, 160, true
   
-  click do
+  click do #make this switch on/off depending on what you click. Only 1 should be on 
     
   end
 end
