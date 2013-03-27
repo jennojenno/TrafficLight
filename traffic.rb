@@ -42,19 +42,19 @@ class Bulb < Shoes::Shape
 end
 
 class GoBulb < Bulb
-  def colour
+  def bulb_colour
     "#00FF30"
   end
 end
 
 class WaitBulb < Bulb
-  def colour
+  def bulb_colour
     "#FFFC00"
   end
 end
 
 class StopBulb < Bulb
-  def colour
+  def bulb_colour
     "#FF0000"
   end
 end
