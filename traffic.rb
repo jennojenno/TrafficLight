@@ -1,11 +1,12 @@
 class TrafficLight  
   include Enumerable
+  include TL
 
   def each
-    yield [true, false, false] #top to bottom: on, off, off
-    yield [true, true, false]
-    yield [false, false, true]
-    yield [false, true, false]
+    yield TL::Stop
+    yield TL::Wait
+    yield TL::Go 
+    yield TL::Wait
   end
 end
 
@@ -59,6 +60,11 @@ class StopBulb < Bulb
   end
 end
 
+module TL 
+  Go = "#00FF30"
+  Wait = "#FFFC00"
+  Stop = "#FF0000"
+end
 
 Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   background "000", :curve => 10, :margin => 25  
@@ -72,6 +78,5 @@ Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   
   click do #make this switch on/off depending on what you click. Only 1 should be on 
 
-    
   end
 end
