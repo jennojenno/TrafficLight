@@ -3,10 +3,10 @@ class TrafficLight
   include TL
 
   def each
-    yield TL::Stop
-    yield TL::Wait
-    yield TL::Go 
-    yield TL::Wait
+    yield [true, false, false]
+    yield [true, true, false]
+    yield [false, false, true] 
+    yield [false, true, false] 
   end
 end
 
@@ -72,11 +72,11 @@ Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   
   @traffic_light = TrafficLight.new
   @top = StopBulb.new self, 50, 40, true     
-  @middle = WaitBulb.new self, 50, 100, true
-  @bottom = GoBulb.new self, 50, 160, true
+  @middle = Bulb.new self, 50, 100, true
+  @bottom = Bulb.new self, 50, 160, true
 
   
   click do #make this switch on/off depending on what you click. Only 1 should be on 
-
+  
   end
 end
